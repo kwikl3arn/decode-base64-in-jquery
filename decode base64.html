@@ -1,0 +1,33 @@
+<html>
+<body>
+<input type="text" id="ref">
+<input type="text" id="post">
+<input type="text" id="fname">
+<input type="text" id="lname">
+
+<script>
+//curent page url https:///kwikl3arn/Application_1?cmVmPTEyMzQmZm5hbWU9RElMSVAmbG5hbWU9S1VNQVImcG9zdD1XRUIlMjBERVZFTE9QRVI=
+var url_string=window.location.href;
+
+   console.log(url_string);
+   var data =url_string
+   var arr = data.split('?');
+
+   console.log(arr[1]);//before decode cmVmPTEyMzQmZm5hbWU9RElMSVAmbG5hbWU9S1VNQVImcG9zdD1XRUIlMjBERVZFTE9QRVI=
+   
+   //decodeing
+   var dec = window.atob(arr[1]);
+   console.log(dec);//after decode ref=1234&fname=DILIP&lname=KUMAR&post=WEB%20DEVELOPER
+
+   var newurl=arr[0]+'?'+dec;
+   console.log(newurl);//  https:///kwikl3arn/Application_1?ref=1234&fname=DILIP&lname=KUMAR&post=WEB%20DEVELOPER
+ 
+ //searching params and sending values to text feilds
+   var url = new URL(newurl);
+    var refno = url.searchParams.get("ref");
+    var fname=url.searchParams.get("fname");
+    var lname=url.searchParams.get("lname");
+    var post=url.searchParams.get("post");
+    </script>
+</body>
+</html>
